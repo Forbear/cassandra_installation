@@ -1,0 +1,12 @@
+[seed0]
+192.168.0.150
+[seed1]
+192.168.0.151
+[node0]
+192.168.0.152
+[nodes:children]
+node0
+[databases:children]
+seed0
+seed1
+node0
