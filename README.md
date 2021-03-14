@@ -1,6 +1,6 @@
 - Create certificates using `create_certificates.sh`
 
-- Run ansible-playbool cassandra_deployment.yml
+- Run `ansible-playbook cassandra_deployment.yml` with below **tags**
     - to install cassandra `--tags check_dependencies,install`
     - to place validation shell script `--tags validate_sh`
       - tag `beta_sh` will run script
