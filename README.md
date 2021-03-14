@@ -14,5 +14,9 @@
     python is in use on node0 by default
     shell is in use on node1 by default
 
+Output example:
+Manual shell:
+![shell](images/tests_manual.png)
+
 Naming node0, node1, node2 is used in Vafrantfile.
 Should be in sync with group_vars/NAME for connection.
