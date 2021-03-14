@@ -16,7 +16,12 @@
 
 Output example:
 Manual shell:
+
 ![shell](images/tests_manual.png)
+
+Ansible results:
+
+![ansible](images/tests_ansible.png)
 
 Naming node0, node1, node2 is used in Vafrantfile.
 Should be in sync with group_vars/NAME for connection.
