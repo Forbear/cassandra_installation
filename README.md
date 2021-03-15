@@ -15,6 +15,8 @@
     - python is in use on node0 by default
     - shell is in use on node1 by default
 
+- Dependencies check and install are included in Vagrantfile
+
 #### Output example:
 Manual shell:
 

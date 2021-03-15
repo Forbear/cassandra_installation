@@ -9,4 +9,8 @@ Vagrant.configure("2") do |conf|
   conf.vm.define "node2" do |node|
     node.vm.network "public_network", ip: "192.168.0.152", bridge: "wlp7s0"
   end
+  conf.vm.provision :ansible do |ansible|
+    ansible.playbook = "cassandra_deployment.yml"
+    ansible.tags = "check_dependencies"
+  end
 end
