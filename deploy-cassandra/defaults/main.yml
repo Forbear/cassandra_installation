@@ -1,0 +1,19 @@
+---
+# defaults file for deploy-cassandra
+
+seed: 
+  - "{{ hostvars['localhost']['groups']['seed0'][0] }}"
+  - "{{ hostvars['localhost']['groups']['seed1'][0] }}"
+
+cluster_name: "Cassandra_cluster_DS"
+
+keystore_src: "CHANE_IT_TO_KEYSTORE_PATH"
+truststore_src: "CHANE_IT_TO_TRUSTSTORE_PATH"
+
+keystore_dest: "/etc/cassandra/default.conf"
+truststore_dest: "/etc/cassandra/default.conf"
+
+remote_config_dir: "/etc/cassandra/default.conf"
+
+remote_validation_dir: "/tmp"
+

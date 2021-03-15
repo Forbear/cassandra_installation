@@ -1,0 +1,10 @@
+---
+
+- name: Ensure shell command is present and up to date
+  copy:
+    src: "check_cassandra"
+    dest: "{{ remote_validation_dir }}/check_cassandra"
+
+- name: Perform tests.
+  command: "cqlsh -f {{ remote_validation_dir }}/check_cassandra"
+

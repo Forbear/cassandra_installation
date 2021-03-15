@@ -1,0 +1,31 @@
+---
+# tasks to deploy cassandra
+
+- name: Check dependencies.
+  tags:
+    - check_dependencies
+  import_tasks: set_dependencies.yml
+
+- name: Install cassandra.
+  tags:
+    - install_cassandra
+  yum:
+    name: cassandra
+    state: latest
+
+- name: Ensure configuration is present and up to date.
+  tags:
+    - install_cassandra
+    - update_configuration
+  import_tasks: update_configuration.yml
+
+- name: Validate cassandra using shell script.
+  tags:
+    - validate_sh
+  import_tasks: validate_shell.yml
+
+- name: Validate cassandra using python script.
+  tags:
+    - validate_py
+  import_tasks: validate_python.yml
+
