@@ -1,0 +1,30 @@
+---
+# tasks to ensure dependencies for cassandra are present
+
+- name: Java dependency check.
+  yum:
+    name: java-1.8.0-openjdk
+    state: installed
+  become: true
+
+- name: Ensure SELinux is enabled.
+  selinux:
+    policy: targeted
+    state: enforcing
+  become: true
+
+- name: Ensure cassandra repo is included.
+  template:
+    src: "cassandra.repo.j2"
+    dest: "/etc/yum.repos.d/cassandra.repo"
+  vars:
+    version: 311x
+  become: true
+  register: yum_repo_change
+
+- name: Update yum cache.
+  yum:
+    update_cache: yes
+  become: true
+  when: yum_repo_change.changed
+

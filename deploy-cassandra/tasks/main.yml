@@ -1,0 +1,9 @@
+---
+# tasks to deploy cassandra
+
+- name: Install cassandra.
+    yum:
+      name: cassandra
+      state: latest
+    become: true
+

@@ -1,0 +1,24 @@
+---
+
+- name: Ensure nodes config is present and up to date.
+  template:
+    src: "cassandra.yaml.j2"
+    dest: "{{ remote_config_dir }}/cassandra.yaml"
+  vars:
+  become: true
+  notify: restart_cassandra
+
+- name: Ensure keystore is present and up to date.
+  copy:
+    src: "{{ keystore_src }}"
+    dest: "{{ remote_config_dir }}/.keystore"
+  become: true
+  notify: restart_cassandra
+
+- name: Ensure truststore is present and up to date.
+  copy:
+    src: "{{ truststore_src }}"
+    dest: "{{ remote_config_dir }}/.truststore"
+  become: true
+  notify: restart_cassandra
+

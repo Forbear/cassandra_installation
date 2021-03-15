@@ -1,0 +1,19 @@
+---
+# handlers file for deploy-cassandra
+
+- name: Restart cassandra service.
+  sysvinit:
+    name: cassandra
+    state: restarted
+    enabled: yes
+  listen: restart_cassandra
+  become: true
+
+- name: Give some time for cassandra to sturt up.
+  wait_for:
+    timeout: 50
+  listen: await_cassandra
+
+- name: Validate that cassandra is up and running after restart.
+  shell: nodetool status
+  listen: check_cassandra

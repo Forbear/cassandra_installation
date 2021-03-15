@@ -1,0 +1,21 @@
+---
+
+- name: Ensure python3-pip is installed
+  yum:
+    name: python3-pip
+    state: latest
+  become: true
+
+- name: Ensure cassandra-driver is installed for python.
+  shell: pip3 install cassandra-driver
+  become: true
+
+- name: Ensure validation file is present and up to date.
+  copy:
+    src: "check_cassandra_peers.py"
+    dest: "{{ remote_validation_dir }}/check_cassandra_peers.py"
+
+- name: Get peers table.
+  tags:
+    - beta_py
+  command: "python3 {{ remote_validation_dir }}/check_cassandra_peers.py"
