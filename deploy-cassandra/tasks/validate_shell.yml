@@ -6,7 +6,5 @@
     dest: "{{ remote_validation_dir }}/check_cassandra"
 
 - name: Perform tests.
-  tags:
-    - beta_sh
   command: "cqlsh -f {{ remote_validation_dir }}/check_cassandra"
 

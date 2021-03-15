@@ -5,20 +5,17 @@
     src: "cassandra.yaml.j2"
     dest: "{{ remote_config_dir }}/cassandra.yaml"
   vars:
-  become: true
   notify: restart_cassandra
 
 - name: Ensure keystore is present and up to date.
   copy:
-    src: "{{ keystore_src }}"
+    src: "{{ keystore_src }}/.keystore"
     dest: "{{ remote_config_dir }}/.keystore"
-  become: true
   notify: restart_cassandra
 
 - name: Ensure truststore is present and up to date.
   copy:
-    src: "{{ truststore_src }}"
+    src: "{{ truststore_src }}/.truststore"
     dest: "{{ remote_config_dir }}/.truststore"
-  become: true
   notify: restart_cassandra
 
