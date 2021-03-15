@@ -1,2 +1,0 @@
-SELECT peer, rack, host_id FROM system.peers;
-
